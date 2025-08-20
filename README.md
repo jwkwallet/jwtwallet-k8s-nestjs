@@ -137,6 +137,8 @@ yarn typechecks
 
 **Important**: All PR titles must follow the Conventional Commits specification (e.g., `feat: add new feature`, `fix: resolve bug`, `docs: update README`).
 
+**PR Requirements**: All PRs (excluding dependabot updates) should reference which issue they are fixing by tagging `Fixes #<issue_number>` in the PR description.
+
 ## Security
 
 This library handles sensitive cryptographic operations. Please review our [Security Policy](SECURITY.md) before using in production environments.
