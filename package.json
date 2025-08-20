@@ -1,6 +1,6 @@
 {
-  "name": "jwtwallet-nestjs",
-  "version": "0.0.2",
+  "name": "jwtwallet-k8s-nestjs",
+  "version": "1.0.0",
   "description": "Manage your jwks keys easily and securely",
   "author": {
     "email": "mehmet@appac.ltd",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jwtwallet/jwtwallet-nestjs"
+    "url": "https://github.com/jwtwallet/jwtwallet-k8s-nestjs"
   },
   "license": "GPL-3.0-only",
   "type": "commonjs",
@@ -42,9 +42,9 @@
     ]
   },
   "dependencies": {
-    "@nestjs/common": "^11.1.0",
+    "@nestjs/common": "^11.1.6",
     "@nestjs/config": "^4.0.2",
-    "jose": "^6.0.10",
+    "jose": "^6.0.12",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.2",
     "uuid": "^11.1.0"
@@ -123,7 +123,7 @@
   "prettier": {
     "trailingComma": "none"
   },
-  "packageManager": "yarn@4.3.1",
+  "packageManager": "yarn@4.9.3",
   "engines": {
     "node": ">=20.12.2"
   },

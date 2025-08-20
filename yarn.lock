@@ -148,18 +148,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@nestjs/common@npm:^11.1.0":
-  version: 11.1.0
-  resolution: "@nestjs/common@npm:11.1.0"
+"@nestjs/common@npm:^11.1.6":
+  version: 11.1.6
+  resolution: "@nestjs/common@npm:11.1.6"
   dependencies:
-    file-type: "npm:20.4.1"
+    file-type: "npm:21.0.0"
     iterare: "npm:1.2.1"
     load-esm: "npm:1.0.2"
     tslib: "npm:2.8.1"
     uid: "npm:2.0.2"
   peerDependencies:
-    class-transformer: "*"
-    class-validator: "*"
+    class-transformer: ">=0.4.1"
+    class-validator: ">=0.13.2"
     reflect-metadata: ^0.1.12 || ^0.2.0
     rxjs: ^7.1.0
   peerDependenciesMeta:
@@ -167,7 +167,7 @@ __metadata:
       optional: true
     class-validator:
       optional: true
-  checksum: 10c0/828665a91d75aa237e871173e9ec70a9a331839fef85d1c1c009c16bc2e94a627ee39f65fe0e560db043345293122657b86a66236459ed219ebcd96ebe14b7e0
+  checksum: 10c0/75bd76533f68133e7530c8145f7bbee8c2d169bb93aadf1e3eb6874b254cdfb7a7fe328d387ba4564d6d6bc63ff7213c0645cb6fcda7eee2ef33fa179b77699a
   languageName: node
   linkType: hard
 
@@ -792,7 +792,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tokenizer/inflate@npm:^0.2.6":
+"@tokenizer/inflate@npm:^0.2.7":
   version: 0.2.7
   resolution: "@tokenizer/inflate@npm:0.2.7"
   dependencies:
@@ -2112,15 +2112,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"file-type@npm:20.4.1":
-  version: 20.4.1
-  resolution: "file-type@npm:20.4.1"
+"file-type@npm:21.0.0":
+  version: 21.0.0
+  resolution: "file-type@npm:21.0.0"
   dependencies:
-    "@tokenizer/inflate": "npm:^0.2.6"
-    strtok3: "npm:^10.2.0"
+    "@tokenizer/inflate": "npm:^0.2.7"
+    strtok3: "npm:^10.2.2"
     token-types: "npm:^6.0.0"
     uint8array-extras: "npm:^1.4.0"
-  checksum: 10c0/ae6f65e537205a9a3e07ae574de74ed5210aa78899d6478351a466f97e3f17096b93d74cb97f3fce7488bc8486a21e449ab076ec358ed06984f4a9a8f48a9f55
+  checksum: 10c0/ee6b0bb5771ad154e236bb77b5c00907743fef3637c3825713c1d6913377d3d969ebba4a6f0aa854b8231552e2c1bd0387229fe67394dc3d08a01819c7d107b1
   languageName: node
   linkType: hard
 
@@ -2859,10 +2859,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jose@npm:^6.0.10":
-  version: 6.0.10
-  resolution: "jose@npm:6.0.10"
-  checksum: 10c0/d1327afd7fe6011a6648b570b8a220dd89c3d427d6fb3225825650df3249b58bf0f76494179a34a0f7ad185832fb083d6402092d3c7f880c677d0dd38cc75eae
+"jose@npm:^6.0.12":
+  version: 6.0.12
+  resolution: "jose@npm:6.0.12"
+  checksum: 10c0/e5ca51b078b2443f6ca671e14d72e0ffd21b760dac0d77cabd7af649a127376ec90665c8b25f34dd88bb31094915ee662daf76e0b33a025d28dbc2bc17413dec
   languageName: node
   linkType: hard
 
@@ -2986,7 +2986,7 @@ __metadata:
   resolution: "jwtwallet-nestjs@workspace:."
   dependencies:
     "@microsoft/eslint-formatter-sarif": "npm:^3.1.0"
-    "@nestjs/common": "npm:^11.1.0"
+    "@nestjs/common": "npm:^11.1.6"
     "@nestjs/config": "npm:^4.0.2"
     "@semantic-release/changelog": "npm:^6.0.3"
     "@semantic-release/commit-analyzer": "npm:^13.0.0"
@@ -3003,7 +3003,7 @@ __metadata:
     eslint-plugin-jest: "npm:^28.3.0"
     eslint-plugin-node: "npm:^11.1.0"
     eslint-plugin-prettier: "npm:^5.0.0"
-    jose: "npm:^6.0.10"
+    jose: "npm:^6.0.12"
     prettier: "npm:^3.0.0"
     reflect-metadata: "npm:^0.2.2"
     rimraf: "npm:^5.0.7"
@@ -4134,13 +4134,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"peek-readable@npm:^7.0.0":
-  version: 7.0.0
-  resolution: "peek-readable@npm:7.0.0"
-  checksum: 10c0/a979b0678a5c2b58c2a755eadc5bb990814e479ff17b9fbcec39a6c88f278eb9a788b6ae13371ee84f7a2c6672505dac961f99ccc0c0300354d9b4dc5a207604
-  languageName: node
-  linkType: hard
-
 "picocolors@npm:^1.0.0":
   version: 1.0.1
   resolution: "picocolors@npm:1.0.1"
@@ -4894,13 +4887,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"strtok3@npm:^10.2.0":
-  version: 10.2.2
-  resolution: "strtok3@npm:10.2.2"
+"strtok3@npm:^10.2.2":
+  version: 10.3.4
+  resolution: "strtok3@npm:10.3.4"
   dependencies:
     "@tokenizer/token": "npm:^0.3.0"
-    peek-readable: "npm:^7.0.0"
-  checksum: 10c0/0d13a7fee7d773693b9e23c53429a032beb1d0ba9ab1cef3b5f3968c2c65f5c292a54af2b54c8e55abd210544e786a2369c8c241c68bb7d80b0ae5b207e4afd9
+  checksum: 10c0/277ab69e417f4545e364ffaf9d560c991f531045dbace32d77b5c822cccd76a608b782785a2c60595274288d4d32dced184a5c21dc20348791da697127dc69a8
   languageName: node
   linkType: hard
 
