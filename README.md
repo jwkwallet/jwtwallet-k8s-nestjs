@@ -133,7 +133,9 @@ yarn typechecks
 2. Create your feature branch (`git checkout -b feature/amazing-feature`)
 3. Commit your changes following [Conventional Commits](https://conventionalcommits.org/)
 4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+5. Open a Pull Request with a title following [Conventional Commits](https://conventionalcommits.org/) format
+
+**Important**: All PR titles must follow the Conventional Commits specification (e.g., `feat: add new feature`, `fix: resolve bug`, `docs: update README`).
 
 ## Security
 

@@ -165,6 +165,7 @@ await this.kubeClient.createNamespacedCustomObject({
 
 - Follow semantic versioning (SemVer)
 - Use conventional commits for automated changelog generation
+- **PR titles must follow Conventional Commits format** (e.g., `feat: add feature`, `fix: resolve issue`)
 - Tag releases properly for npm publishing
 - Update version in package.json through semantic-release
 - Document breaking changes and migration paths
