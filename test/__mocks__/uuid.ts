@@ -1,1 +1,1 @@
-export const v4 = jest.fn(() => 'mocked-uuid-v4');
+export const v4 = jest.fn(() => "mocked-uuid-v4");

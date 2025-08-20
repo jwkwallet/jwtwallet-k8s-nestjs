@@ -1,159 +1,166 @@
-import { ConfigModuleBuilder } from '../src/jwtwallet.module-definition';
-import { JWTWalletModuleModuleOptions } from '../src/jwtwallet.module-options.interface';
+import { ConfigModuleBuilder } from "../src/jwtwallet.module-definition";
+import { JWTWalletModuleModuleOptions } from "../src/jwtwallet.module-options.interface";
 
-describe('ConfigModuleBuilder', () => {
-  describe('Module Definition', () => {
-    it('should be defined', () => {
+describe("ConfigModuleBuilder", () => {
+  describe("Module Definition", () => {
+    it("should be defined", () => {
       expect(ConfigModuleBuilder).toBeDefined();
     });
 
-    it('should have MODULE_OPTIONS_TOKEN', () => {
+    it("should have MODULE_OPTIONS_TOKEN", () => {
       expect(ConfigModuleBuilder.MODULE_OPTIONS_TOKEN).toBeDefined();
-      expect(typeof ConfigModuleBuilder.MODULE_OPTIONS_TOKEN).toBe('string');
+      expect(typeof ConfigModuleBuilder.MODULE_OPTIONS_TOKEN).toBe("string");
     });
 
-    it('should have ASYNC_OPTIONS_TYPE', () => {
+    it("should have ASYNC_OPTIONS_TYPE", () => {
       expect(ConfigModuleBuilder.ASYNC_OPTIONS_TYPE).toBeDefined();
     });
 
-    it('should have OPTIONS_TYPE', () => {
+    it("should have OPTIONS_TYPE", () => {
       expect(ConfigModuleBuilder.OPTIONS_TYPE).toBeDefined();
     });
 
-    it('should create ConfigurableModuleClass with forRoot method', () => {
+    it("should create ConfigurableModuleClass with forRoot method", () => {
       const ModuleClass = ConfigModuleBuilder.ConfigurableModuleClass;
       expect(ModuleClass).toBeDefined();
       expect(ModuleClass.forRoot).toBeDefined();
-      expect(typeof ModuleClass.forRoot).toBe('function');
+      expect(typeof ModuleClass.forRoot).toBe("function");
     });
 
-    it('should create ConfigurableModuleClass with forRootAsync method', () => {
+    it("should create ConfigurableModuleClass with forRootAsync method", () => {
       const ModuleClass = ConfigModuleBuilder.ConfigurableModuleClass;
       expect(ModuleClass).toBeDefined();
       expect(ModuleClass.forRootAsync).toBeDefined();
-      expect(typeof ModuleClass.forRootAsync).toBe('function');
+      expect(typeof ModuleClass.forRootAsync).toBe("function");
     });
   });
 
-  describe('Module Configuration', () => {
-    it('should configure module with basic options', () => {
+  describe("Module Configuration", () => {
+    it("should configure module with basic options", () => {
       const options: JWTWalletModuleModuleOptions = {
-        issuer: 'test-issuer',
+        issuer: "test-issuer",
         keyExpirationSeconds: 3600,
-        keyRotationIntervalSeconds: 300,
+        keyRotationIntervalSeconds: 300
       };
 
-      const result = ConfigModuleBuilder.ConfigurableModuleClass.forRoot(options);
-      
+      const result =
+        ConfigModuleBuilder.ConfigurableModuleClass.forRoot(options);
+
       expect(result).toBeDefined();
       expect(result.module).toBeDefined();
       expect(result.providers).toBeDefined();
       expect(Array.isArray(result.providers)).toBe(true);
     });
 
-    it('should configure module with extras (isGlobal: true)', () => {
+    it("should configure module with extras (isGlobal: true)", () => {
       const options: JWTWalletModuleModuleOptions = {
-        issuer: 'test-issuer',
+        issuer: "test-issuer",
         keyExpirationSeconds: 3600,
-        keyRotationIntervalSeconds: 300,
+        keyRotationIntervalSeconds: 300
       };
 
-      const result = ConfigModuleBuilder.ConfigurableModuleClass.forRoot(options);
+      const result =
+        ConfigModuleBuilder.ConfigurableModuleClass.forRoot(options);
 
       expect(result).toBeDefined();
       expect(result.global).toBe(true); // Default from setExtras
     });
 
-    it('should configure module with default extras', () => {
+    it("should configure module with default extras", () => {
       const options: JWTWalletModuleModuleOptions = {
-        issuer: 'test-issuer',
+        issuer: "test-issuer",
         keyExpirationSeconds: 3600,
-        keyRotationIntervalSeconds: 300,
+        keyRotationIntervalSeconds: 300
       };
 
-      const result = ConfigModuleBuilder.ConfigurableModuleClass.forRoot(options);
+      const result =
+        ConfigModuleBuilder.ConfigurableModuleClass.forRoot(options);
 
       expect(result).toBeDefined();
       expect(result.global).toBe(true); // Default isGlobal is true
     });
 
-    it('should configure module with all possible options', () => {
+    it("should configure module with all possible options", () => {
       const options: JWTWalletModuleModuleOptions = {
-        issuer: 'comprehensive-issuer',
-        namespace: 'test-namespace',
-        algorithm: 'RS256',
+        issuer: "comprehensive-issuer",
+        namespace: "test-namespace",
+        algorithm: "RS256",
         keyExpirationSeconds: 7200,
-        keyRotationIntervalSeconds: 600,
+        keyRotationIntervalSeconds: 600
       };
 
-      const result = ConfigModuleBuilder.ConfigurableModuleClass.forRoot(options);
-      
+      const result =
+        ConfigModuleBuilder.ConfigurableModuleClass.forRoot(options);
+
       expect(result).toBeDefined();
       expect(result.providers).toBeDefined();
-      
+
       // Find the options provider
       const optionsProvider = (result.providers as any[]).find(
-        provider => provider.provide === ConfigModuleBuilder.MODULE_OPTIONS_TOKEN
+        (provider) =>
+          provider.provide === ConfigModuleBuilder.MODULE_OPTIONS_TOKEN
       );
-      
+
       expect(optionsProvider).toBeDefined();
       expect(optionsProvider.useValue).toEqual(options);
     });
 
-    it('should support async configuration', () => {
+    it("should support async configuration", () => {
       const asyncOptions = {
         useFactory: () => ({
-          issuer: 'async-issuer',
+          issuer: "async-issuer",
           keyExpirationSeconds: 3600,
-          keyRotationIntervalSeconds: 300,
-        }),
+          keyRotationIntervalSeconds: 300
+        })
       };
 
-      const result = ConfigModuleBuilder.ConfigurableModuleClass.forRootAsync(asyncOptions);
+      const result =
+        ConfigModuleBuilder.ConfigurableModuleClass.forRootAsync(asyncOptions);
 
       expect(result).toBeDefined();
       expect(result.providers).toBeDefined();
       expect(Array.isArray(result.providers)).toBe(true);
     });
 
-    it('should support async configuration with inject', () => {
+    it("should support async configuration with inject", () => {
       const asyncOptions = {
-        inject: ['CONFIG_SERVICE'],
+        inject: ["CONFIG_SERVICE"],
         useFactory: (configService: any) => ({
           issuer: configService.getIssuer(),
           keyExpirationSeconds: configService.getKeyExpiration(),
-          keyRotationIntervalSeconds: configService.getKeyRotationInterval(),
-        }),
+          keyRotationIntervalSeconds: configService.getKeyRotationInterval()
+        })
       };
 
-      const result = ConfigModuleBuilder.ConfigurableModuleClass.forRootAsync(asyncOptions);
+      const result =
+        ConfigModuleBuilder.ConfigurableModuleClass.forRootAsync(asyncOptions);
 
       expect(result).toBeDefined();
       expect(result.providers).toBeDefined();
     });
   });
 
-  describe('Token and Type Validation', () => {
-    it('should have consistent MODULE_OPTIONS_TOKEN format', () => {
+  describe("Token and Type Validation", () => {
+    it("should have consistent MODULE_OPTIONS_TOKEN format", () => {
       const token = ConfigModuleBuilder.MODULE_OPTIONS_TOKEN;
       // The token is generated by NestJS ConfigurableModuleBuilder
       expect(token).toBeDefined();
-      expect(typeof token === 'string' || typeof token === 'symbol').toBe(true);
-      if (typeof token === 'string') {
+      expect(typeof token === "string" || typeof token === "symbol").toBe(true);
+      if (typeof token === "string") {
         expect(token).toMatch(/^CONFIGURABLE_MODULE_OPTIONS\[[\w]+\]$/);
         expect(token.length).toBeGreaterThan(0);
       }
     });
 
-    it('should maintain type consistency', () => {
+    it("should maintain type consistency", () => {
       // This test ensures the ConfigModuleBuilder is properly typed
       // and can handle the JWTWalletModuleModuleOptions interface
       const testOptions: JWTWalletModuleModuleOptions = {
-        issuer: 'type-test-issuer',
+        issuer: "type-test-issuer",
         keyExpirationSeconds: 1800,
         keyRotationIntervalSeconds: 150,
-        namespace: 'type-test',
-        algorithm: 'ES256',
+        namespace: "type-test",
+        algorithm: "ES256"
       };
 
       expect(() => {
