@@ -5,6 +5,7 @@ node_modules
 .history
 build
 dist
+coverage
 
 # Yarn 4
 .yarn/*
